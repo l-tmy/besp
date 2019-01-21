@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>富文本编辑</title>
+</head>
+
+<body>
+  <!-- <iframe designMode='on'src="./content.html" name="richedit" style="width:400px;height:300px;"></iframe> -->
+  <div id='div' contenteditable=true style="width:400px;height:300px;border:solid 1px #ccc;"></div>
+  <button onclick="insertImg()">插入图片</button>
+  <button onclick="test()">获取内容</button>
+  <button onclick="testBold()">加粗</button>
+  <button onclick="addLink()">设置锚链接</button>
+  <button onclick="test1()">斜体</button>
+  <button onclick="test2()">居中</button>
+  <button onclick="test3()">复制</button>
+  <button onclick="test4()">粘贴</button>
+  <button onclick="test5()">选择全部</button>
+  <button onclick="test6()">下角标</button>
+  <script>
+    /*window.addEventListener('load', function () {
+      window.frames['richedit'].document.designMode = 'on';
+    }, false);*/
+
+    function insertImg(){
+    	document.execCommand('insertImage', false, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548069825319&di=4c8ca254dc6053349f922b4430924a14&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F05%2F01%2F16pic_501154_b.jpg');
+    }
+    function test(){
+    	document.execCommand('bold', false, null)
+    	alert(document.getElementById('div').textContent)
+    	//document.getElementById('div').innerHTML='<h1>hello</h1>'
+    }
+    function testBold(){
+      console.log('1')
+      document.execCommand('bold', false, null)
+    }
+    function addLink(){
+      document.execCommand('createLink', false, 'http://www.baidu.com') 
+    }
+    function test1(){
+      document.execCommand('italic',false,null)
+    }
+    function test2(){
+      document.execCommand('justifyCenter',false,null)
+    }
+    function test3(){
+      document.execCommand('copy',false,null)
+    }
+    function test4(){
+      document.execCommand('paste',false,null)
+    }
+    function test5(){
+      document.execCommand('selectAll',false,null)
+    }
+    function test6(){
+      document.execCommand('subscript',false,null)
+    }
+  </script>
+</body>
+</html>
