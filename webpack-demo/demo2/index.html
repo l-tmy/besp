@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= htmlWebpackPlugin.options.title %></title>
+	<!-- 直接渲染 -->
+	<script type="text/javascript">
+		<%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+	</script>
+</head>
+<body>
+ <!-- 我是注释 -->
+ <!-- 遍历 htmlWebpackPlugin-->
+<!--  <% for(var key in htmlWebpackPlugin.files.chunks) {%>
+ 	<%= key %>
+ <%}%> -->
+
+ <!-- 循环引入单独的chunks -->
+ <% for(var k in htmlWebpackPlugin.files.chunks) {%>
+ 	<% if (k !== "main"){ %>
+		<script src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+ 	<% } %>
+ <%}%>
+</body>
+</html>
